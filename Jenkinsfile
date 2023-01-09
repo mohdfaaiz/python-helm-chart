@@ -29,6 +29,8 @@ pipeline{
                 }
             }
         }  
+    }
+}
         
 //         stage('AWS ECR login') {
 //             steps {
