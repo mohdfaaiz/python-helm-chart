@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: fayizv/flask
+  repository: mohammedfaaiz/helm
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.1.1"
+  tag: "1.1"
 
 imagePullSecrets: []
 nameOverride: "flask-app"
