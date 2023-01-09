@@ -52,15 +52,16 @@ pipeline{
             }
         }
      
-//         stage('AWS ECR push') {
-//             steps {
-//                 script {
-//                     sh 'docker tag fayizv/flask:latest 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}' 
-//                     sh 'docker push 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}'
+        stage('AWS ECR push') {
+            steps {
+                script {
+                    // sh 'docker tag fayizv/flask:latest 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}' 
+                    // sh 'docker push 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}'
+                    sh 'helm push mavenhelm-0.${BUILD_NUMBER}.0.tgz oci://976846671615.dkr.ecr.us-east-1.amazonaws.com'
 
-//                 }
-//             }
-//         }
+                }
+            }
+        }
 
 //         stage('Helm Push to ECR') {
 //             steps {
