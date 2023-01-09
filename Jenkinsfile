@@ -20,12 +20,15 @@ pipeline{
        stage('pushing to dockerhub') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                    // some block
+                     withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerhubpwd')]) {
+                  // some block
                     sh 'docker login -u mohammedfaaiz -p ${dockerhubpwd}'
+                    
+                    sh 'docker push mohammedfaaiz/helm:latest'
                     }
+                    
 
-                    sh 'docker push mohammedfaaiz/helm'
+                    
                 }
             }
         }  
