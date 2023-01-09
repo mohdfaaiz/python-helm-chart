@@ -12,11 +12,11 @@ pipeline{
             }
         }  
 
-        stage('Build Maven'){
-            steps{
-                sh 'mvn clean install -DskipTests'
-            }
-         }
+        // stage('Build Maven'){
+        //     steps{
+        //         sh 'mvn clean install -DskipTests'
+        //     }
+        //  }
 
        stage("Build Docker Image") {
             steps {
