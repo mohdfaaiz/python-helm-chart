@@ -51,6 +51,12 @@ pipeline{
                 }
             }
         }
+           stage("compress file for exporting"){
+            steps{
+                sh 'tar cvzf nginx-cluster.${BUILD_NUMBER}.tgz nginx-ingress '
+                // sh 'docker tag nginx-ingress:latest 976846671615.dkr.ecr.us-east-1.amazonaws.com/nginx-ingress:latest'
+            }
+        }
      
         stage('AWS ECR push') {
             steps {
