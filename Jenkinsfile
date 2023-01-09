@@ -12,17 +12,13 @@ pipeline{
             }
         }  
 
-        // stage('Build Maven'){
-        //     steps{
-        //         sh 'mvn clean install -DskipTests'
-        //     }
-        //  }
+
 
        stage("Build Docker Image") {
             steps {
                 script {
                     sh 'docker build -t mohammedfaaiz/helm .'
-                    sh 'docker tag mohammedfaaiz/helm:${BUILD_NUMBER} '
+                    sh 'docker tag mohammedfaaiz/helm mohammedfaaiz/helm:${BUILD_NUMBER} '
                 }               
             }
         }
