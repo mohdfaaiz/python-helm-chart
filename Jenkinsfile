@@ -53,7 +53,7 @@ pipeline{
         }
            stage("compress file for exporting"){
             steps{
-                sh 'tar cvzf nginx-cluster.${BUILD_NUMBER}.tgz nginx-ingress '
+                sh 'tar cvzf flaskchart.${BUILD_NUMBER}.tgz flaskchart '
                 // sh 'docker tag nginx-ingress:latest 976846671615.dkr.ecr.us-east-1.amazonaws.com/nginx-ingress:latest'
             }
         }
@@ -63,7 +63,7 @@ pipeline{
                 script {
                     // sh 'docker tag fayizv/flask:latest 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}' 
                     // sh 'docker push 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}'
-                    sh 'helm push mavenhelm-0.${BUILD_NUMBER}.0.tgz oci://976846671615.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'helm push flaskchart.${BUILD_NUMBER}.tgz oci://825943142547.dkr.ecr.us-east-1.amazonaws.com'
 
                 }
             }
