@@ -32,12 +32,12 @@ pipeline{
                     sh 'docker push mohammedfaaiz/helm:latest'
                     }
        }
-        stage('add build number'){
-            steps{
-                sh 'sed -i "s/repository: .*/repository: "mohammedfaaiz\/helm": /g" flaskchart/values.yaml'
-                sh 'sed -i "s/tag: .*/tag: "1.1"/g" flaskchart/values.yaml '
-            }
-        }
+        // stage('add build number'){
+        //     steps{
+        //         sh 'sed -i "s/repository: .*/repository: "mohammedfaaiz\/helm": /g" flaskchart/values.yaml'
+        //         sh 'sed -i "s/tag: .*/tag: "1.1"/g" flaskchart/values.yaml '
+        //     }
+        // }
 
         stage('AWS ECR login') {
             steps {
