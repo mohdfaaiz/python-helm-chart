@@ -11,7 +11,7 @@ pipeline{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mohdfaaiz/python-helm-chart']]])
             }
         }  
-        
+
         stage('Build Maven'){
             steps{
                 sh 'mvn clean install -DskipTests'
@@ -38,8 +38,8 @@ pipeline{
        }
         stage('add build number'){
             steps{
-                sh 'sed -i 's/repository: fayizv\/flask/repository: mohammedfaaiz\/helm: /g' flaskchart/values.yaml'
-                sh 'sed -i 's/tag: .*/tag: "1.1"/g' flaskchart/values.yaml '
+                sh 'sed -i "s/repository: fayizv\/flask/repository: mohammedfaaiz\/helm: /g" flaskchart/values.yaml'
+                sh 'sed -i "s/tag: .*/tag: "1.1"/g" flaskchart/values.yaml '
             }
         }
 
