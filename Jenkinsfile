@@ -38,7 +38,7 @@ pipeline{
        }
         stage('add build number'){
             steps{
-                sh 'sed -i "s/repository: fayizv/flask/repository: mohammedfaaiz\/helm: /g" flaskchart/values.yaml'
+                sh 'sed -i "s/repository: fayizv/flask/repository: mohammedfaaiz/helm: /g" flaskchart/values.yaml'
                 sh 'sed -i "s/tag: .*/tag: "1.1"/g" flaskchart/values.yaml '
             }
         }
