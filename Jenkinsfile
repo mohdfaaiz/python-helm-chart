@@ -39,7 +39,7 @@ pipeline{
             steps {
                 script {
                    
-                        sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 825943142547.dkr.ecr.us-east-1.amazonaws.com'
+                        sh 'aws ecr get-login-password  --region us-east-1 | helm registry login --username AWS  --password-stdin 825943142547.dkr.ecr.us-east-1.amazonaws.com'
    
                   
                     
@@ -67,7 +67,7 @@ pipeline{
                 script {
                     // sh 'docker tag fayizv/flask:latest 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}' 
                     // sh 'docker push 707032823801.dkr.ecr.us-east-1.amazonaws.com/flask-deploy:${BUILD_NUMBER}'
-                    sh 'helm push helm-test-chart.${BUILD_NUMBER}.tgz oci://825943142547.dkr.ecr.us-east-1.amazonaws.com/helm-test-chart'
+                    sh 'helm push helm-test-chart.${BUILD_NUMBER}.tgz oci://825943142547.dkr.ecr.us-east-1.amazonaws.com'
 
                 }
             }
