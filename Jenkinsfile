@@ -1,14 +1,13 @@
 pipeline{
-    agent any
-   
+    agent any  
+
     stages {
+
         stage("Checkout") {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mohdfaaiz/python-helm-chart']]])
             }
         }  
-
-
 
        stage("Build Docker Image") {
             steps {
@@ -17,17 +16,17 @@ pipeline{
                     sh 'docker tag mohammedfaaiz/helm mohammedfaaiz/helm:${BUILD_NUMBER} '
                 }               
             }
-        }
-         
+        }        
+
        stage('pushing to dockerhub') {
-            steps {
-               
+            steps {              
                   // some block
                     sh 'docker login -u mohammedfaaiz -p ${dockerhubpwd}'
                     
                     sh 'docker push mohammedfaaiz/helm:latest'
                     }
        }
+
         // stage('add build number'){
         //     steps{
         //         sh 'sed -i "s/repository: .*/repository: "mohammedfaaiz\/helm": /g" flaskchart/values.yaml'
@@ -38,15 +37,11 @@ pipeline{
         stage('AWS ECR login') {
             steps {
                 script {
-                   
                         sh 'aws ecr get-login-password  --region us-east-1 | helm registry login --username AWS  --password-stdin 825943142547.dkr.ecr.us-east-1.amazonaws.com'
-   
-                  
-                    
-
                 }
             }
         }
+
            stage("compress file for exporting"){
             steps{
                 sh 'tar cvzf helm-test-chart.${BUILD_NUMBER}.tgz flaskchart '
@@ -75,6 +70,7 @@ pipeline{
 //                 sh 'rm -rf flaskchart-*'
 //                 }
 //         }
+
         stage('Invoke Build number to Pipeline Deployjob') {
             steps {
                 build job: 'DeployJob', parameters : [[ $class: 'StringParameterValue', name: 'buildnum', value: "${BUILD_NUMBER}"]]
