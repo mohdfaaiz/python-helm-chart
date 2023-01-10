@@ -25,7 +25,7 @@ pipeline{
                     }
        }
 
-        // stage('add build number'){
+     // stage('add build number'){
         //     steps{
         //         sh 'sed -i "s/repository: .*/repository: "mohammedfaaiz\/helm": /g" flaskchart/values.yaml'
         //         sh 'sed -i "s/tag: .*/tag: "1.1"/g" flaskchart/values.yaml '
@@ -40,7 +40,7 @@ pipeline{
             }
         }
 
-           stage("compress file for exporting"){
+        stage("compress file for exporting"){
             steps{
                 sh 'tar cvzf helm-test-chart.${BUILD_NUMBER}.tgz flaskchart '
                 // sh 'docker tag nginx-ingress:latest 976846671615.dkr.ecr.us-east-1.amazonaws.com/nginx-ingress:latest'
