@@ -53,15 +53,7 @@ pipeline{
                 // sh 'docker tag nginx-ingress:latest 976846671615.dkr.ecr.us-east-1.amazonaws.com/nginx-ingress:latest'
             }
         }
-        // stage('Docker image push'){
-        //     steps{
-        //         script{
-        //             sh 'docker tag flaskchart:latest 825943142547.dkr.ecr.us-east-1.amazonaws.com/flaskchart:latest'
-        //             sh 'docker push 825943142547.dkr.ecr.us-east-1.amazonaws.com/helm-test-chart:latest'
-        //         }
-        //     }
-        // }
-     
+
         stage('AWS ECR push') {
             steps {
                 script {
@@ -83,11 +75,11 @@ pipeline{
 //                 sh 'rm -rf flaskchart-*'
 //                 }
 //         }
-//         stage('Invoke Build number to Pipeline Deployjob') {
-//             steps {
-//                 build job: 'DeployJob', parameters : [[ $class: 'StringParameterValue', name: 'buildnum', value: "${BUILD_NUMBER}"]]
-//             }
-//         }
+        stage('Invoke Build number to Pipeline Deployjob') {
+            steps {
+                build job: 'DeployJob', parameters : [[ $class: 'StringParameterValue', name: 'buildnum', value: "${BUILD_NUMBER}"]]
+            }
+        }
        
     }
 }
