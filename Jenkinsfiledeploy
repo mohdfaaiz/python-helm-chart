@@ -16,7 +16,7 @@ pipeline {
 
         stage("Deploy to Minikube") {
             steps {
-                sh 'helm install flaskchart flaskchart' 
+                sh 'helm install helm-test-chart helm-test-chart' 
             }
         }
     }
