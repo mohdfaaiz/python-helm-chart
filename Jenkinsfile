@@ -34,8 +34,8 @@ pipeline{
             steps {
                 script {
                     sh 'echo version : 0.${BUILD_NUMBER}.0 >> flaskchart/Chart.yaml'
-                    sh 'helm package flaskchart'
-                    sh 'helm push flaskchart.${BUILD_NUMBER}.tgz oci://825943142547.dkr.ecr.us-east-1.amazonaws.com'
+                    sh 'helm package helm-test-chart'
+                    sh 'helm push helm-test-chart-0.${BUILD_NUMBER}.0.tgz oci://825943142547.dkr.ecr.us-east-1.amazonaws.com'
 
                 }
             }
