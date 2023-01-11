@@ -9,7 +9,7 @@ pipeline {
             steps {
                 sh 'rm -rf flaskchart' 
                 sh 'aws ecr get-login-password  --region us-east-1 | helm registry login --username AWS  --password-stdin 825943142547.dkr.ecr.us-east-1.amazonaws.com'
-                sh "helm pull oci://825943142547.dkr.ecr.us-east-1.amazonaws.com/flaskchart --version 0.${params.buildnum}.0 --untar"
+                sh "helm pull oci://825943142547.dkr.ecr.us-east-1.amazonaws.com/helm-test-chart --version 0.${params.buildnum}.0 --untar"
                 
             }
         }
