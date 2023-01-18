@@ -16,7 +16,7 @@ pipeline {
 
         stage("Deploy to Minikube") {
             steps {
-                sh 'helm install helm-test-chart .' 
+                sh 'helm install chart .' 
             }
         }
     }

@@ -1,6 +1,0 @@
-replicaCount: 2
-service:
-  type: LoadBalancer
-image: mohammedfaaiz/helm:${BUILD_NUMBER}
-pullPolicy: IfNotPresent
-  
